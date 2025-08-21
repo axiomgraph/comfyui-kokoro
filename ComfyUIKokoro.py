@@ -122,7 +122,7 @@ def download_voices(path):
         r = requests.get(url)
         r.raise_for_status()  # Ensure the request was successful
         content = io.BytesIO(r.content)
-        data: np.ndarray = torch.load(content, weights_only=True).numpy()
+        data: np.ndarray = torch.load(content, weights_only=True).detach().cpu().numpy()
         voices[name] = data
 
     with open(file_path, "wb") as f:
