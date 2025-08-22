@@ -41,6 +41,7 @@ OR
 # Download the Models Manually
 
 Download kokoro-v1.0.onnx from here https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx
+
 Download voices_v1.bin https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin
 
 And Place both files in here
