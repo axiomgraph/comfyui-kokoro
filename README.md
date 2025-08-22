@@ -1,3 +1,5 @@
+
+
 # Comfy UI Kokoro
 
 <a href="https://www.buymeacoffee.com/stavsapq" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="40" width="174"></a>
@@ -33,6 +35,17 @@ pip install -r requirements.txt
 And finally reboot Comfy.
 
 The onnx model and speakers meta-data will be automatically downloaded on the first run.
+
+OR
+
+# Download the Models Manually
+
+Download kokoro-v1.0.onnx from here https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx
+Download voices_v1.bin https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin
+
+And Place both files in here
+
+ComfyUI/models/kokoro/
 
 If using windows portable version and experience issues with dependencies, check the following:
 
