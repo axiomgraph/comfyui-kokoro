@@ -7,6 +7,8 @@ import requests
 from tqdm import tqdm
 import io
 
+BASE_MODEL_DIR = os.path.join(os.path.expanduser("~"), "ComfyUI", "models", "kokoro")
+
 logger = logging.getLogger(__name__)
 
 MODEL_URL = "https://github.com/taylorchu/kokoro-onnx/releases/download/v0.2.0/kokoro.onnx"
@@ -122,7 +124,7 @@ def download_voices(path):
         r = requests.get(url)
         r.raise_for_status()  # Ensure the request was successful
         content = io.BytesIO(r.content)
-        data: np.ndarray = torch.load(content, weights_only=True).detach().cpu().numpy()
+        data: np.ndarray = torch.load(content, weights_only=True).detach().cpu().numpy()       
         voices[name] = data
 
     with open(file_path, "wb") as f:
@@ -155,7 +157,8 @@ class KokoroSpeaker:
 
     def __init__(self):
         self.kokoro = None
-        self.node_dir = os.path.dirname(os.path.abspath(__file__))
+    #    self.node_dir = os.path.dirname(os.path.abspath(__file__))
+        self.node_dir = BASE_MODEL_DIR
         self.voices_path = os.path.join(self.node_dir, VOICES_FILENAME)
         self.model_path = os.path.join(self.node_dir, MODEL_FILENAME)
 
@@ -190,7 +193,7 @@ class KokoroSpeakerCombiner:
 
     def __init__(self):
         self.kokoro = None
-        self.node_dir = os.path.dirname(os.path.abspath(__file__))
+        self.node_dir = BASE_MODEL_DIR
         self.voices_path = os.path.join(self.node_dir, VOICES_FILENAME)
         self.model_path = os.path.join(self.node_dir, MODEL_FILENAME)
 
@@ -233,7 +236,7 @@ class KokoroGenerator:
 
     def __init__(self):
         self.kokoro = None
-        self.node_dir = os.path.dirname(os.path.abspath(__file__))
+        self.node_dir = BASE_MODEL_DIR
         self.model_path = os.path.join(self.node_dir, MODEL_FILENAME)
         self.voices_path = os.path.join(self.node_dir, VOICES_FILENAME)
 
